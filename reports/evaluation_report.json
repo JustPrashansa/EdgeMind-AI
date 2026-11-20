@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-11-20T11:02:54",
+  "data_validation": {
+    "new_rows": 2000,
+    "training_rows": 8000,
+    "missing_values": {},
+    "duplicate_ids": 0,
+    "ids_overlapping_training": 0,
+    "target_distribution_new": {
+      "0": 1932,
+      "1": 68
+    },
+    "failure_rate_new": 0.034,
+    "failure_rate_training": 0.033875
+  },
+  "champion_metrics_on_new_batch": {
+    "accuracy": 0.9715,
+    "precision": 0.5662650602409639,
+    "recall": 0.6911764705882353,
+    "f1": 0.6225165562913907
+  },
+  "candidate_metrics_5fold_on_new_batch": {
+    "accuracy": 0.976,
+    "precision": 0.6388888888888888,
+    "recall": 0.6764705882352942,
+    "f1": 0.6571428571428571
+  },
+  "quality_gate": {
+    "metric": "f1",
+    "min_improvement": 0.0,
+    "min_recall": 0.5,
+    "min_f1": 0.5,
+    "max_recall_drop": 0.05,
+    "eligible": true,
+    "decision": "CANDIDATE ELIGIBLE FOR PROMOTION",
+    "reasons": [],
+    "promoted": false
+  },
+  "artifacts": {
+    "champion": "models\\model_registry\\approved_model.joblib",
+    "candidate": "models\\candidate\\candidate.joblib"
+  },
+  "mlflow_run_id": "7eb576b35956449bbe3fbbba49c412b6"
+}

@@ -110,3 +110,19 @@ _Add screenshots here: Overview, Live Monitoring, Analytics, MLOps, MLflow UI._
 
 ## 17. Future Enhancements
 - MQTT/OPC-UA connection to real sensors, probability calibration, data drift detection, per-failure-type models, SHAP explanations, multi-machine fleet view.
+## 18. Model Monitoring & Retraining (extension)
+
+`src/monitor_retrain.py` adds a monitoring workflow on top of the existing registry. It never changes the approved model by itself.
+
+```
+python -m src.train --offline                       # once: approved champion
+python -m src.monitor_retrain --prepare --drift     # once: incoming labelled batch (drop --drift for no drift)
+python -m src.monitor_retrain                       # Tasks A-D
+python -m src.monitor_retrain --promote             # optional, explicit, recorded promotion
+```
+
+- **A. Prepare data:** checks required columns, missing values, duplicate IDs, overlap with training IDs; prints size and failure rate; applies the existing `preprocessing.clean()`.
+- **B. Evaluate champion:** `approved_model.joblib` scored on the batch (accuracy, precision, recall, F1) -> `reports/evaluation_report.json`.
+- **C. Retrain:** existing training rows (same 80% split as `src.train`) + new batch, same Random Forest settings; saved to `models/candidate/candidate.joblib`; logged to the existing MLflow experiment.
+- **D. Quality gate:** candidate is scored with 5-fold out-of-fold predictions so it is never judged on rows it trained on. Gate metric is F1 (only ~3.4% failures, so accuracy is misleading). Eligible only if F1 >= champion F1, recall >= 0.50, F1 >= 0.50 (same floors as `mlops.py`) and recall drops by <= 0.05. The decision is written to `reports/decision_log.csv`.
+- The batch is the 2,000 AI4I rows the champion never trained on (simulated incoming data); `--drift` shifts tool wear and torque slightly.
