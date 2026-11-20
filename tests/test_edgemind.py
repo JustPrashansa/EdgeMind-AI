@@ -1,4 +1,4 @@
-"""Run: python -m pytest -q   (trains models first if missing)"""
+"""Run: python -m pytest -q    (trains models first if missing)"""
 import sys
 from pathlib import Path
 
