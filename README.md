@@ -2,7 +2,7 @@
 ### Offline Autonomous AI Engineer for Local Systems — *Intelligence Without Internet*   
 
 > Educational prototype for predictive maintenance. **Not** a certified industrial safety system.
-> All live readings are **SIMULATED DATA** — the app is not connected to real hardware.
+> All live readings are **SIMULATED DATA** — the app is not connected to real hardware.  
 
 ## 1. Introduction
 EdgeMind AI is an offline-first Edge AI + MLOps platform. It monitors machine sensor readings, predicts machine failure risk, detects unusual behaviour, stores everything locally in SQLite and shows alerts on a Streamlit dashboard.
