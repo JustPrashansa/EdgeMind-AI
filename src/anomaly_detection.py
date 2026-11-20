@@ -1,5 +1,5 @@
 """Isolation Forest anomaly detection on sensor readings."""
-import joblib
+import joblib 
 
 from src.config import ANOMALY_MODEL
 from src.preprocessing import to_frame
