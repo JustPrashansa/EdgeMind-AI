@@ -1,5 +1,5 @@
 # EdgeMind AI
-### Offline Autonomous AI Engineer for Local Systems — *Intelligence Without Internet*
+### Offline Autonomous AI Engineer for Local Systems — *Intelligence Without Internet*   
 
 > Educational prototype for predictive maintenance. **Not** a certified industrial safety system.
 > All live readings are **SIMULATED DATA** — the app is not connected to real hardware.
@@ -72,7 +72,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## 11. Execution
+## 11. Execution   
 ```powershell
 python -m src.train                 # downloads dataset once, trains, logs to MLflow, promotes model
 python -m pytest -q                 # run tests
